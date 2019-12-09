@@ -27,8 +27,8 @@ jobs:
     executor: docker/machine
     steps:
       - checkout
-      - docker/dockerlint:
-          treat-warnings-as-errors: true
+#      - docker/dockerlint:
+#          treat-warnings-as-errors: true
 
 # docker push
   build-and-push:
