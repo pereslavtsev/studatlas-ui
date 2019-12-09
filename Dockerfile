@@ -1,12 +1,18 @@
-FROM node:lts-alpine
+FROM node:10-alpine as builder
 
-WORKDIR /opt/app
-
-ENV NODE_ENV production
+ARG NODE_ENV=development
+ENV NODE_ENV=${NODE_ENV}
 
 COPY package.json .
 COPY yarn.lock .
 RUN yarn install
+
+FROM node:10-alpine
+
+ENV NODE_ENV production
+
+WORKDIR /opt/app
+COPY --from=builder node_modules node_modules
 
 COPY . .
 
