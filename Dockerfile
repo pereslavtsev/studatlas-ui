@@ -1,15 +1,15 @@
-FROM node:10-alpine
+FROM node:lts-alpine
 
 WORKDIR /opt/app
 
 ENV NODE_ENV production
 
-COPY package*.json ./
+COPY package.json .
+COPY yarn.lock .
+RUN yarn install
 
-RUN npm ci 
+COPY . .
 
-COPY . /opt/app
+RUN yarn build
 
-RUN npm install --dev && npm run build
-
-CMD [ "npm", "start" ]
+CMD [ "yarn", "start" ]
