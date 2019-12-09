@@ -7,8 +7,8 @@ orbs:
 jobs:
 
   test:
-#    docker:
-#      - image: circleci/node:12.5.0
+    docker:
+      - image: circleci/node:12.5.0
 #        environment:
 #          MONGODB_URI: mongodb://test:password@localhost/studatlas
 #      - image: circleci/mongo
